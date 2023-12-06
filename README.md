@@ -5,6 +5,24 @@
 ### LaunchedEffect
 - 
 
+## 12/6
+- Dom 이란?
+  - 브라우저에서 html 의 요소들 객체화하여 들고 있는 주체
+  - DOM 은 트리 전체를 칭하고 이때 가장 상위에 있는 객체가 document 임
+  - window.document 객체가 DOM 에 분류됨
+  - HTML 엘리먼트들은 Node 를 상속 받기 때 문에 최종적으로 DOM 은 node 들을 들고 있는 형태
+  - Dom 은 트리구조로 Html 요소들을 객체형태로 들고 있게됨
+    ![img.png](img.png)
+
+- CSSOM
+  - 비슷한 형식으로 HTML 대신 CSS 가 대상인 DOM 이다
+  - DOM(html) + CSSOM(css) 이 융합되 우리가 보는 화면 구성
+- BOM
+  - 브라우저 자체를 다루기 위한 API
+  - window.location, .history, .navigator 등 / alert, setTimout 등등 이 있음
+- 이와같이 DOM, BOM 이서 제공하는 함수들을 WEB API 라고 함
+
+
 
 
 ## 12/5
@@ -15,21 +33,6 @@
   - 미제공: .d.ts 파일을 추가 -> 직접 제작
     - 해당 라이브러리와 같은 위치에 .d.ts 파일을 생성하여 type을 정의해주어야함
   - 참고: 실제 라이브러리 코드는 node_modules 안에 해당 라이브러리 이름으로 접근하여 확인 가능
-- Dom 이란? 
-  - 브라우저에서 html 의 요소들 객체화하여 들고 있는 주체
-  - JS 객체는 아니지만 JS를 통해 DOM 에 접근하여 조작할 수 있음
-  - Dom 에서 제공하는 API 규격은 브라우저들 모두 공유함
-  - Dom 은 트리구조로 Html 요소들을 객체형태로 들고 있게됨
-  - HTML 엘리먼트들은 Node 를 상속 받기 때 문에 최종적으로 DOM 은 node 들을 들고 있는 형태
-  - HTML 요소들에 대해 공통적으로 사용하던 API 는 Node 에서 제공하는 API? 
-    - 해당 API 에 대해서 정리가 필요함
-  - CSSOM
-    - 비슷한 형식으로 HTML 대신 CSS 가 대상인 DOM 이다
-    - DOM(html) + CSSOM(css) 이 융합되 우리가 보는 화면 구성
-  - BOM
-    - 브라우저 자체를 다루기 위한 API
-    - Window.~ / alert / setTimout 등등 이 있음
-    - 
 
 ## 12/04
 ### 해상도란
