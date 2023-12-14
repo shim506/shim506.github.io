@@ -5,9 +5,30 @@
 ### LaunchedEffect
 -
 
+### Promise
+### Corse 
 
 ## 12/14
 [FE]
+
+### Flex 속성
+- flex-grow
+  - Flex 3번째 요소인 flex-basis 보다 늘어날 수 있는지 결정하는 속성
+  - default 값은 0 -> inflexible 한 상태를 의미
+  - 1이상의 값인 경우 화면 넓이에 따라 유동적 변화 -> flexible
+- flex-shrink
+  - flex-basis 보다 줄어들 수 있는지 결전하는 속성
+  - 디폴터값은 1 이고 1이상의 속성일때 해당 비율로 줄어듬
+  - 0일경우 inflexible
+- flex-basis
+  - flex item 의 기본크기
+  - 디폴트 값인 auto 는 컨텐츠 너비를 의미
+  - flex-direction 이 row 일때는 너비, column 일때는 높이를 의미
+- flex: 1 
+  - flex-grow:1 , flex-shrink:1, flex-basis: 0%
+  - 기본 점유크기를 0으로 만든후 화면 비율에 따라 유연하게 조절됨
+
+
 - Component props 값을 넣어 줄때는 중괄호 안에 넣어준다
 - 중 children 은 예외적으로 중괄호 대신 컴포넌트 태그 사이에 입력한다
 - JS 스프레드 연산자
