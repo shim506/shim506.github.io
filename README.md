@@ -3,8 +3,35 @@
 - (가니쉬) 모듈화에서의 라이브러리 import
 
 ### LaunchedEffect
-- 
+-
 
+
+## 12/14
+[FE]
+- Component props 값을 넣어 줄때는 중괄호 안에 넣어준다
+- 중 children 은 예외적으로 중괄호 대신 컴포넌트 태그 사이에 입력한다
+- JS 스프레드 연산자
+  - 리스트에 사용시 리스트 벗겨짐
+  - 리스트 합치기 가능 [...a, ...b] 
+  - 리스트 DeepCopy에 사용가능  b = [...a]
+  - object 를 합치거나 복사에도 사용가
+  - 정의치 않은 prop 사용을 가능케함
+    - ButtonInterface 로 prop 을 정의해두어 정의하지 못하지만 외부에서 전달되는 prop 을 내부에서 사용가능
+```js
+export default function Button({
+  variant,
+  size,
+  styles,
+  ...props
+}: ButtonInterface) {
+  return (
+    <button
+      {...props}
+    >
+    </button>
+  )
+}
+```
 ## 12/6
 - Dom 이란?
   - 브라우저에서 html 의 요소들 객체화하여 들고 있는 주체
