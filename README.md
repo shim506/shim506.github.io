@@ -11,7 +11,7 @@
 
 ### Corse
 
-### 12/26
+## 12/26
 
 ### Bom 분석
 - Navigator (브라우저 정보 객체)
@@ -28,13 +28,15 @@
 - useLocation: 경로 정보를 담고 있음
 - useMatch: url path 이름에 대한 패턴일치 여부를 반환
 
-[정리]
+[정리]<br/>
 useParams 는 오직 path parms 만을 지원한다
 useSearchParams 는 쿼리 파람을 지원한다
 
-[참고]
-https://velog.io/@bomida/React-useNavigate-useParams-useLocation-useMatch
-https://velog.io/@rayong/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EA%B8%B0%EC%B4%88-%EC%BF%BC%EB%A6%AC-%EC%8A%A4%ED%8A%B8%EB%A7%81-useSearchParams
+[참고]<br/>
+- https://velog.io/@bomida/React-useNavigate-useParams-useLocation-useMatch
+- https://velog.io/@rayong/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EA%B8%B0%EC%B4%88-%EC%BF%BC%EB%A6%AC-%EC%8A%A4%ED%8A%B8%EB%A7%81-useSearchParams
+
+---
 
 ## 12/19
 [FE]
@@ -60,6 +62,7 @@ return (
   - 기본 제네릭 값으로 FieldValues 를 설정해, 사용자가 주입을 명시하지 않아도 된다
 - 제네릭 변수는 두개를 받는다 (TFieldValues, TName)
 
+---
 ## 12/18
 
 [FE]
@@ -76,7 +79,7 @@ return (
 - LazyColum key 누락 이슈
     - recyclerview 에서 스크롤시 이전 아이템의 데이터의 뷰 정보를 공유하는 이슈와 비슷한 현상 발생(ex-체크박스가 체크되어야하지 않아야할 곳에 체크되어짐)
     - diffUtils 를 구현했던 것과 같이 key 값을 넣어서 해결 가능
-
+---
 ## 12/14
 [FE]
 
@@ -124,7 +127,7 @@ export default function Button({
   )
 }
 ```
-
+---
 ## 12/6
 
 - Dom 이란?
@@ -142,7 +145,7 @@ export default function Button({
     - 브라우저 자체를 다루기 위한 API
     - window.location, .history, .navigator 등 / alert, setTimout 등등 이 있음
 - 이와같이 DOM, BOM 이서 제공하는 함수들을 WEB API 라고 함
-
+---
 ## 12/5
 
 - TypeScript 에서 JS 외부 라이브러리를 사용하려면 타입 정보가 필요하고 그에 따라 타입 정보를 갖는 파일을 "타잊 정의 파일" 이라고한다
@@ -152,7 +155,7 @@ export default function Button({
     - 미제공: .d.ts 파일을 추가 -> 직접 제작
         - 해당 라이브러리와 같은 위치에 .d.ts 파일을 생성하여 type을 정의해주어야함
     - 참고: 실제 라이브러리 코드는 node_modules 안에 해당 라이브러리 이름으로 접근하여 확인 가능
-
+---
 ## 12/04
 
 ### 해상도란
@@ -170,7 +173,7 @@ export default function Button({
 
 - 개발시에는 물리픽셀이 아닌 논리픽셀을 작업함
 - 논리픽셀과 물리픽셀 비율은 device-pixel ratio
-
+---
 ## 11/30
 
 ### Fragment Result API
@@ -186,7 +189,7 @@ export default function Button({
     - 코루틴의 코드에는 코루틴을 일시 중단 시킬 수 있는 함수 또는 코드가 포함될 수 있다
     - 이런 중단 코드 코루틴 내부에 포함되거나 suspend fun 으로 정의 되어야하만 한다
 - 내일 이어서...
-
+---
 ## 11/29
 
 ### 모듈화에서의 라이브러리 import
@@ -196,7 +199,7 @@ export default function Button({
 - 과거 compile 키워드는 deprecated 되었고 역할을 api 가 대체한다(둘 모두 권장X)
 - implementation 대신 api 키워드를 통해 종속성을 라이브러리 import 에도 대입할 수 있지만 권장되지 않음
     - 모듈을 사용할때는 모듈의 인터페이스만이 외부에 노출되어야하는데 라이브러리의 인터페이스까지 노출되면 안되기 때문
-
+---
 ## 2023/11/28
 
 - 한 컴퓨터에서 github 계정을 여러개를 사용할때는 컴퓨터에서 ssh 를 만들어 계정에 등록하여 사용하면
