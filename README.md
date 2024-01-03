@@ -1,18 +1,72 @@
 # 정리 필요글
-
-### Gson -> Serialization 마이그레이션
-
-- (가니쉬) 모듈화에서의 라이브러리 import
-
-### LaunchedEffect
--
-
 ### Promise
-
 ### Corse
+### Android Compose ConstraintLayout
 
+---
+## 1/3
+## Flex Box
+- flexbox 이전에는 float, position, table 등을 많이 사용했다
+- float 은 이미지와 텍스트가 같이 있을 때 어떻게 배치할지에 대한 내용
+
+- flex box 는 container 에 지정하는 속성값과, item 에 지정하는 속성값으로 나뉜다
+- 중심축과 수직축(교차축)이 존재한다
+### Container 속성 정리
+- display: display: flex 를 통해 flex 를 적용할 수 있다
+  - 기본적으로 내용물의 width 만큼 배치된다
+- flex-direction: 중심축을 지정한다
+  - row(기본값),column,rowReverse...
+- flex-wrap: 
+  - nowrap(기본값): 아이템들이 줄바꿈이 안됨, 대신 크기가 줄어들거나 잘림 
+  - wrap(줄바꿈 됨)
+- flex-flow
+  - flex-direction 과 flex-wrap 을 한꺼번에 설정해줄 수 있음
+  - flex-flow: column nowrap;
+- justify-content: 아이템을 어떻게 배치할 지를 정한다, 중심축에서 어떻게 배치할지를 결정함
+  - flex-start(기본값): 시작점부터 배치함
+  - flex-end: 끝점부터 배치함
+  - center, flex-around, space-evenly
+- align-items: 반대축에서 어떻게 배치할지를 정함
+  - stretch: 수직축 방향으로 끝까지 늘어남
+  - flex-start: 아이템을 시작점으로 정렬
+  - center: 아이템들 가운대로 정렬함
+- align-content: 아이템의 행이 2줄 이상 되었을때 수직축 정렬 방향 결정
+  - align-items 속성 그대로 가짐
+
+<br/>
+<strong>
+ justify 는 중심축 정렬, align 은 수직축 정렬 방식을 의미한다
+</strong>
+<br/>
+<strong>
+justify-content: center;align-item: center; 로 아이템을 한가운데 배치할 수 있음</strong>
+
+
+### item 속성 정리
+- flex-basis: 아이템의 기본 크기를 설정함
+  - auto(기본값): 해당 item 의 컨텐츠 크기를 차지함
+  - 실제값: 아이템의 최소크기를 지켜줌
+- flex-grow: 부모의 크기를 다 채울지를 판단한다, 0 보다 큰값을 가질시 빈공간을 채움, flex-basis 보다 커질 수 있는지 결정
+  - 0 (기본값): 부모의 크기를 다 채우지 않음
+  - 아이템마다 상이하게 지정할 경우 지정된 숫자 비중 별로 크기를 채워 나감
+- flex-shrink: 부모의 크기에따라 줄어들 수있는지와 얼마나의 비중으로 줄어들지를 결정함, flex-basis 보다 커질 수 있는지 결정
+  - 1(기본값): 아이템이 작아질 수 있음
+  - 0: flex-basis 보다 작아지지 않기 때문에 고정폭의 컬럼을 만들 수 있음, width 로 설정
+- flex: flex-grow, flex-shrink, flex-basis 를 한번에 쓸 수 있는 축약 속성
+  - 1 :  flex-grow: 1; flex-shrink: 1; flex-basis: 0%;
+  - 1 1 auto : flex-grow: 1; flex-shrink: 1; flex-basis: auto;
+  - 숫자를 한개만 대입 해줄 경우 grow, shrink 는 해당 값을 같고, flex-basis 만 0%
+- display-basis: 부모의 크기를 나누어 가지는 비중(android 의 weight 와 동일)
+- align-self: container 의 지배에서 벗어나 배치를 하고싶을때
+
+---
+## 12/29
+[Android]
+- stateIn 키워드를 통해 flow 를 StateFlow 로 만들 수 있다
+- flow 값에 대한 중간 가공이 길어질 경우 flatMapLatest 로 효율을 올릴 수 있다. 특히 최신 정보의 화면을 그리는 ui 에 대해서 효과적이다
+
+---
 ## 12/26
-
 ### Bom 분석
 - Navigator (브라우저 정보 객체)
   - 브라우저 관한 정보 및 userAgent 값 접근 가능
@@ -62,45 +116,15 @@ return (
   - 기본 제네릭 값으로 FieldValues 를 설정해, 사용자가 주입을 명시하지 않아도 된다
 - 제네릭 변수는 두개를 받는다 (TFieldValues, TName)
 
----
-## 12/18
 
-[FE]
-
-### CSS: Flex
-
-- 컨테이너 적용 속성
-    - "display: flex" :
-
-## 12/14![](../Downloads/image (2).png)
-
+## 12/14
 [Android]
-
 - LazyColum key 누락 이슈
     - recyclerview 에서 스크롤시 이전 아이템의 데이터의 뷰 정보를 공유하는 이슈와 비슷한 현상 발생(ex-체크박스가 체크되어야하지 않아야할 곳에 체크되어짐)
     - diffUtils 를 구현했던 것과 같이 key 값을 넣어서 해결 가능
 ---
 ## 12/14
 [FE]
-
-### Flex 속성
-
-- flex-grow
-    - Flex 3번째 요소인 flex-basis 보다 늘어날 수 있는지 결정하는 속성
-    - default 값은 0 -> inflexible 한 상태를 의미
-    - 1이상의 값인 경우 화면 넓이에 따라 유동적 변화 -> flexible
-- flex-shrink
-    - flex-basis 보다 줄어들 수 있는지 결전하는 속성
-    - 디폴터값은 1 이고 1이상의 속성일때 해당 비율로 줄어듬
-    - 0일경우 inflexible
-- flex-basis
-    - flex item 의 기본크기
-    - 디폴트 값인 auto 는 컨텐츠 너비를 의미
-    - flex-direction 이 row 일때는 너비, column 일때는 높이를 의미
-- flex: 1
-    - flex-grow:1 , flex-shrink:1, flex-basis: 0%
-    - 기본 점유크기를 0으로 만든후 화면 비율에 따라 유연하게 조절됨
-
 
 - Component props 값을 넣어 줄때는 중괄호 안에 넣어준다
 - 중 children 은 예외적으로 중괄호 대신 컴포넌트 태그 사이에 입력한다
