@@ -1,10 +1,64 @@
-# 정리 필요글
-### Promise
-### Corse
-### Android Compose ConstraintLayout
+# 학습정리 원칙
+1. 공부 내용은 기본적으로 깃헙(TIL)에 정리한다
+2. 공유할 만한 내용은 정리하여 블로그에 게시한다
+3. 사내 코드가 포함되는 내용은 Notion 에 작성하고 링크를 깃헙에 첨부한
+--- 
+# 정리& 학습 필요 주제
+1. Promise
+2. Corse
+3. Android Compose ConstraintLayout
+
+
+--- 
+### [1/4]
+## 정규 표현식
+- 주요특징
+  - /표현식 내용/(옵션)  의 형태를 갖는다
+    - ex) /Hi|Hello/gm → Hi 가 표현식, gm이 옵션을 의미함
+  - 특수문자가 예약어로 사용되기 때문에 \ 를 붙임으로써 문자 그대로를 패턴으로 사용할 것임을 나타내야함
+- 옵션정리
+  - g : Global → 전역 검색
+  - i: case Insensitive → 대소문자 없는 검색
+  - m: multi-line → 여러줄 검색
+    
+### 예시보기
+(ex) /\/global\/version1\/id\/\w+\/item\/\w+/
+- path 를 나타내기 위해 \/ 가 사용됨
+- 문자를 나타내기위해 \w 그리고 문자 여러개를 의미하는 + 가 같이쓰임
+[참고링크]
+
+https://www.youtube.com/watch?v=t3M6toIflyQ
+## React-Hook-Form
+
+### 사용 이유
+- 유효성 검사를 간편하게 할 수 있다
+  - 라이브러리가 없다면 모든 유효성 검사가 필요한값을 state 로 관리해야해서 코드 양이 많아짐
+- 불필요한 리랜더링을 막을 수 있다.
+  - 라이브러리가 없다면 모두 state 로 관리되기에 값이 하나 바뀔 때마다 리랜더링이 일어남
+- 그 외 watch, getValues 등등 유용한 함수들을 반환해줌
+
+### UseForm 제공 요소
+- useForm 반환 객체를 destructuring(구조분해) 하여 각 요소들을 활용한다
+- register
+  - input 테그를 다룰 수 있게하는 함수
+  - validation 을 넣어줌
+  - name 을 첫째 인자로 갖는다 (key 값)
+  - options  : 유효성 검사를 위한 프로퍼티 (required, min, max, minLength, pattern…)
+- formState
+  - 에러 정보를 다룰 수 있게해줌
+  - 그 외에 submit 횟수, isDirty 등등의 다양한 정보 소유
+- getValues
+  - 필드에 입력된 값을 받을 수 있음
+- reset
+  - create(post) 기능이 아닌 edit(put) 기능을 지원할 때 좋음
+  - react query 의 onSuccess 안에서 데이터를 초기화 할때 사용하기 좋음
+
+### 사용 예시
+https://www.notion.so/React-hook-form-7a87553199dd49eb813a6f430d8d0549?pvs=4
+
 
 ---
-## 1/3
+### [1/3]
 ## Flex Box
 - flexbox 이전에는 float, position, table 등을 많이 사용했다
 - float 은 이미지와 텍스트가 같이 있을 때 어떻게 배치할지에 대한 내용
@@ -58,6 +112,10 @@ justify-content: center;align-item: center; 로 아이템을 한가운데 배치
   - 숫자를 한개만 대입 해줄 경우 grow, shrink 는 해당 값을 같고, flex-basis 만 0%
 - display-basis: 부모의 크기를 나누어 가지는 비중(android 의 weight 와 동일)
 - align-self: container 의 지배에서 벗어나 배치를 하고싶을때
+
+[참고링크]
+https://studiomeal.com/archives/197
+https://www.youtube.com/watch?v=7neASrWEFEM
 
 ---
 ## 12/29
