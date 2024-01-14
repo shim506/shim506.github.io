@@ -9,9 +9,7 @@
 # 정리& 학습 필요 주제
 
 1. Promise
-2. Corse
-3. Android Compose ConstraintLayout
-4. ErroBoundary 에 대해서 throw 가 아닌 showErrorBoundary 로 처리하는 것이 옳다
+2ErrorBoundary 에 대해서 throw 가 아닌 showErrorBoundary 로 처리하는 것이 옳다
 
 --- 
 
@@ -25,7 +23,25 @@
 - semantic 요소
     - form, table, img, header, footer 등등
 
+### 마진 상쇄(CSS)
+- 두 블록 요소의 상하 마진이 겹칠때 어느 한쪽 값만 적용함
+- 마진 상쇄 발생 조건
+  - 오직 상하 마진에만 적용됨
+  - 두 요소가 모두 block-level 일 경우만 적용됨
+  - flex 박스 내부에서는 발생하지 않음
+- 마진 상쇄 발생 케이스
+  1. 인정 형제 박스 간 상하 마진 겹침
+  2. 부모와 첫번재 상단 마진 or 부모와 마지막 하단 마진 겹침
+
+
 ![img_1.png](img_1.png)
+
+### 인라인 요소와 블럭 요소
+- 블럭 요소
+  - 사용 가능한 최대 가로 너비를 사용함(width: 100%)
+  - 한줄에 한개만 배치 됨
+  - 크기 값을 가질 수 있음(가로 너비& 세로 길이 지정 가능)
+  - 패딩 및 마진 값을 가질 수 ㅇㅆ음
 
 ### [1/11]
 ## 선택자
