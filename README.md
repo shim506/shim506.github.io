@@ -9,9 +9,34 @@
 # 정리& 학습 필요 주제
 
 1. Promise
-2ErrorBoundary 에 대해서 throw 가 아닌 showErrorBoundary 로 처리하는 것이 옳다
+2. ErrorBoundary 에 대해서 throw 가 아닌 showErrorBoundary 로 처리하는 것이 옳다
 
 --- 
+
+### [1/15]
+### 인라인 요소와 블럭 요소
+- 블럭 요소
+  - 사용 가능한 최대 가로 너비를 사용함(width: 100%)
+  - 한줄에 한개만 배치 됨
+  - 크기 값을 가질 수 있음(가로 너비& 세로 길이 지정 가능)
+  - 패딩 및 마진 값을 가질 수 있음
+  - 가운데 정렬 방법: "margin: auto"
+  - div, header, p, ol, ul, li, form, table...
+- 인라인 요소
+  - 컨텐츠 너비만큼 차지
+  - 크기값을 가질 수 없음(값 지정 불가)
+  - 상하 마진 적용 불가
+  - 텍스트를 작업사는 요소로 적합
+  - 가운데 정렬 방법: (부모 요소에)text-align: center;
+  - span, a, img, br, button, textarea, select...
+
+이슈 : a tag 에 대해서 말줄임이 적용되지 않음
+원인 : a tag 는 인라인 요소로서 크기 지정이 불가하기 때문에 텍스트가 넘침
+해결 방법
+- 요소에 display: block 또는 display: inline-block 설정 (반대 변환도 가능)
+- display: block -> inline 과 같이 한줄에 표현되면서 크기 및 여백 설정이 가능
+- 하위 요소에 display: contents 적용(자신의 부모를 무시하고, 조부모 요소의 직계자식 인것처럼 작용함)
+
 
 ### [1/14]
 
@@ -36,15 +61,11 @@
 
 ![img_1.png](img_1.png)
 
-### 인라인 요소와 블럭 요소
-- 블럭 요소
-  - 사용 가능한 최대 가로 너비를 사용함(width: 100%)
-  - 한줄에 한개만 배치 됨
-  - 크기 값을 가질 수 있음(가로 너비& 세로 길이 지정 가능)
-  - 패딩 및 마진 값을 가질 수 ㅇㅆ음
-
 ### [1/11]
 ## 선택자
+
+
+https://poiemaweb.com/css3-selector
 
 
 ### [1/8]
@@ -58,7 +79,6 @@
 - 결론: 컨테이너쿼리가 상위 호환임
 
 ### [1/4]
-
 ## 정규 표현식
 
 - 주요특징
@@ -81,7 +101,6 @@
 https://www.youtube.com/watch?v=t3M6toIflyQ
 
 ## React-Hook-Form
-
 ### 사용 이유
 
 - 유효성 검사를 간편하게 할 수 있다
