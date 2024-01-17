@@ -62,7 +62,19 @@
 ![img_1.png](img_1.png)
 
 ### [1/11]
-## 선택자
+## 선택자 -> 주요 개념만 정리
+- 어트리뷰트 셀렉터(Attribute Selector)
+  - 셀렉터[어트리 뷰트]: 지정된 속성을갖는 모든 요소를 선택
+  - a[href] { color: red; } -> a 요소 중 herf 어트리뷰트를 갖는 요소 적용
+  - &[disabled] {} -> &는 emotion 및 CSS in JS 에서 현재 선택 요소 를 의미한다
+- 가상 클래스 셀렉터(Pseudo-Class Selector)
+  - 특정 상태에 따라 스타일을 정의할때 사용됨(hover, 링크 방문여부, 포커스, 체크상태, enabled, disabled)
+  - a:hover { background-color: red; }
+  - :first-child / :first-of-type 등으로 순서도 인식 가능
+- 가상 요소 셀렉터 (Pseudo-Element Selector)
+  - 요소의 특정 부분에 스타일을 적용하기 위해 사용
+  - 콘탠츠 첫줄(:first-line), 콘텐츠 앞(::after)
+
 
 
 https://poiemaweb.com/css3-selector
