@@ -13,12 +13,26 @@
 
 --- 
 ### [2/12]
+
 ### Promise
 - Promise 개념에 있어 크게 Promise 객체를 반환하는 Producer 와 이를 사용하는 Executor 가 있다
 - Producer 는 성공시 실행할 resolve 콜백과 실패시 실행할 reject 콜백 함수를 인자로 받는 콜백함수 인자로 받는다
 - then, catch 보단 async/await 와 try-catch 를 함께 사용한다
 
-### 
+### JS: Falsy 연산자
+- falsy 연산자는 boolean 화 했을때 false 로 취급되는 값 즉 false 같은 값을 의미함
+- falsy 값에 ! 혹은 !! 를 붙여 boolean 화하여 로직을 간단히 표현할 수 있다
+  - console.log(!'''); -> true
+  - console.log(!0); -> true
+  - **console.log(![]); -> false**
+  - **console.log(!{}); -> false**
+- falsy 값: undefined, null, 0, '', NaN
+
+### JS: null 병합 연산자(??), OR 연산자(||)
+- or 연산자는 기존 falsy 값을 falsy로 취급한다
+- 병합 연산자는 null, undefined 만을 falsy 값으로 취급한다
+  - or 연산자 대신 병합 연산자를 사용할때 연산자 왼쪽에 오는값이 0혹은 '' 값이 오는 케이스가 있음을 암시하기에 사용시 주의가 필요함
+
 
 ### [1/15]
 ### 인라인 요소와 블럭 요소
