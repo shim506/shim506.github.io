@@ -8,10 +8,17 @@
 
 # 정리& 학습 필요 주제
 
-1. Promise
-2. ErrorBoundary 에 대해서 throw 가 아닌 showErrorBoundary 로 처리하는 것이 옳다
+1. ErrorBoundary 에 대해서 throw 가 아닌 showErrorBoundary 로 처리하는 것이 옳다
+2. 프로토 타입 학습
 
 --- 
+### [2/12]
+### Promise
+- Promise 개념에 있어 크게 Promise 객체를 반환하는 Producer 와 이를 사용하는 Executor 가 있다
+- Producer 는 성공시 실행할 resolve 콜백과 실패시 실행할 reject 콜백 함수를 인자로 받는 콜백함수 인자로 받는다
+- then, catch 보단 async/await 와 try-catch 를 함께 사용한다
+
+### 
 
 ### [1/15]
 ### 인라인 요소와 블럭 요소
