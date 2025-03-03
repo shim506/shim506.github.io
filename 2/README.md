@@ -110,4 +110,10 @@ class Config {
 따라서 클라이언트가 인지할 수 있고, URL 경로도 실제로 변경된다. 
 반면에 포워드는 서버 내부에서 일어나는 호출이기 때문에 클라이언트가 전혀 인지하지 못한다.
 
+## 25일
+
+### MVVM
+    - 안드로이드에서 많이 사용했던 MVVM + CleanArchitecture 기준으로 봤을때 Presentation 에 View 와 ViewModel이 대응하고, M에 도메인과 데이터가 포함됨
+
+### MVC
 
