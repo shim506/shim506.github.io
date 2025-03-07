@@ -39,16 +39,17 @@
 </head>
 <body>
 
-<h1>망각 곡선 활용하기 TIL</h1>
+<h1>📁 망각 곡선을 이용한 TIL 정리</h1>
 
-<button onclick="loadReadme('2')">2월</button>
-<button onclick="loadReadme('3')">3월</button>
+<button onclick="loadReadme('2')">📂 2월 README</button>
+<button onclick="loadReadme('3')">📂 3월 폴더 README</button>
 
-<h2>📖 README</h2>
-<div id="readme">Loading README...</div>
+<h2>📖 README 내용</h2>
+<div id="readme">아래 버튼을 눌러 README를 확인하세요.</div>
 
 <script>
-    async function loadReadme() {
+    async function loadReadme(folder) {
+        console.log(folder)
         try {
             const response = await fetch(`./${folder}/README.md`);
             if (!response.ok) throw new Error('README.md를 불러올 수 없습니다.');
@@ -67,12 +68,9 @@
 
             document.getElementById('readme').innerHTML = htmlContent;
         } catch (error) {
-            console.log(error)
             document.getElementById('readme').innerHTML = 'README를 불러올 수 없습니다.';
         }
     }
-
-    loadReadme();
 </script>
 
 </body>
