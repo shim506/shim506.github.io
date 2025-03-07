@@ -129,3 +129,10 @@
   - OS 는 프로그램이 요청한 데이터를 매번 디스크에서 읽거나 쓰는 대신 자수 사용되는 데이터를 RAM 에 저장함
   - 버퍼 -> 쓰기 최적화, 캐시 -> 읽기 최적화
   - 웹서버의 경우 자주 조회되는 이미지, CSS 파일, JavaScript 파일 등이 Cache에 저장됨.
+
+# 8일
+## Spring
+
+### 트렌젝션 코드와 Domain 계층
+- domain 계층의 Service 에서 트랜젝션 코드를 직접 호출할 경우 특정 기술(JDBC) 에 의존하게 된다
+- Spring 은 이를 해결하기 위해 트랜젝션 추상화 인터페이스와 구현체들을 제공한다 (JPA TransactionManger, DataSource TransactionManager...)
