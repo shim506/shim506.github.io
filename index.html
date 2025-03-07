@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Pages Navigation</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
         }
+
         button {
             margin: 5px;
             padding: 10px;
@@ -19,15 +18,18 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
         button:hover {
             background: #0056b3;
         }
+
         #readme {
             margin-top: 20px;
             padding: 20px;
             border: 1px solid #ddd;
             background: #f9f9f9;
         }
+
         img {
             max-width: 100%;
             height: auto;
@@ -40,7 +42,7 @@
 <h1>망각 곡선 활용하기 TIL</h1>
 
 <button onclick="loadReadme('2')">2월</button>
-<button onclick="loadReadme('3')">2월</button>
+<button onclick="loadReadme('3')">3월</button>
 
 <h2>📖 README</h2>
 <div id="readme">Loading README...</div>
@@ -65,6 +67,7 @@
 
             document.getElementById('readme').innerHTML = htmlContent;
         } catch (error) {
+            console.log(error)
             document.getElementById('readme').innerHTML = 'README를 불러올 수 없습니다.';
         }
     }
