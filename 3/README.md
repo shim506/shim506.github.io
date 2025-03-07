@@ -122,3 +122,10 @@
 
 ### Application 구조 
 - 프레젠테이션 계층(@Controller) -> 서비스 계층(@Service) -> 데이터 계층(@Repository) -> DB 서버
+
+### Infra
+- Buffer/Cache
+  - 디스크 I/O 성능을 최적화하기 위해 RAM 을 적극적으로 활요하는 기술
+  - OS 는 프로그램이 요청한 데이터를 매번 디스크에서 읽거나 쓰는 대신 자수 사용되는 데이터를 RAM 에 저장함
+  - 버퍼 -> 쓰기 최적화, 캐시 -> 읽기 최적화
+  - 웹서버의 경우 자주 조회되는 이미지, CSS 파일, JavaScript 파일 등이 Cache에 저장됨.
