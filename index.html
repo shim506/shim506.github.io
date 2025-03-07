@@ -41,8 +41,8 @@
 
 <h1>📁 망각 곡선을 이용한 TIL 정리</h1>
 
-<button onclick="loadReadme('2')">📂 2월 README</button>
-<button onclick="loadReadme('3')">📂 3월 폴더 README</button>
+<button onclick="loadReadme('2')">📂 2월 </button>
+<button onclick="loadReadme('3')">📂 3월 </button>
 
 <h2>📖 README 내용</h2>
 <div id="readme">아래 버튼을 눌러 README를 확인하세요.</div>
@@ -63,7 +63,7 @@
                 .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>') // 볼드 변환
                 .replace(/\*(.*?)\*/gim, '<em>$1</em>') // 이탤릭 변환
                 .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>') // 링크 변환
-                .replace(/!\[(.*?)\]\((.*?)\)/gim, '<img src="./' + folder + '/$2" alt="$1">') // 이미지 변환
+                .replace(/!\[(.*?)\]\((.*?)\)/gim, `<img src="./${folder}/$2" alt="$1">`) // 이미지 변환
                 .replace(/\n/gim, '<br>'); // 줄 바꿈 처리
 
             document.getElementById('readme').innerHTML = htmlContent;
