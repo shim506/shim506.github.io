@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #readme {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>망각 곡선 활용하기 TIL</h1>
+
+<button onclick="loadReadme('2')">2월</button>
+<button onclick="loadReadme('3')">2월</button>
+
+<h2>📖 README</h2>
+<div id="readme">Loading README...</div>
+
+<script>
+    async function loadReadme() {
+        try {
+            const response = await fetch(`./${folder}/README.md`);
+            if (!response.ok) throw new Error('README.md를 불러올 수 없습니다.');
+            const text = await response.text();
+
+            // README.md를 HTML로 변환 (간단한 마크다운 변환)
+            const htmlContent = text
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>') // H1 변환
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>') // H2 변환
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>') // H3 변환
+                .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>') // 볼드 변환
+                .replace(/\*(.*?)\*/gim, '<em>$1</em>') // 이탤릭 변환
+                .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>') // 링크 변환
+                .replace(/!\[(.*?)\]\((.*?)\)/gim, '<img src="./' + folder + '/$2" alt="$1">') // 이미지 변환
+                .replace(/\n/gim, '<br>'); // 줄 바꿈 처리
+
+            document.getElementById('readme').innerHTML = htmlContent;
+        } catch (error) {
+            document.getElementById('readme').innerHTML = 'README를 불러올 수 없습니다.';
+        }
+    }
+
+    loadReadme();
+</script>
+
+</body>
+</html>
