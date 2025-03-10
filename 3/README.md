@@ -161,6 +161,31 @@
 ## Spring
 
 ### 트렌젝션 코드와 Domain 계층
-
 - domain 계층의 Service 에서 트랜젝션 코드를 직접 호출할 경우 특정 기술(JDBC) 에 의존하게 된다
 - Spring 은 이를 해결하기 위해 트랜젝션 추상화 인터페이스와 구현체들을 제공한다 (JPA TransactionManger, DataSource TransactionManager...)
+
+# 10일
+
+### 코테
+- joinToString 시 람다가 아닌 sperater 로 주입
+  - arr.toList().joinToString(" ")
+- 규칙 또는 점화식을 찾을 때 더욱 간단한 조건이 없는지 생각해보기
+
+### DB
+- 외래키는 두 테이블을 잇는 키로써 다른테이블에서는 기본키로 작용한다
+## Spring
+### AOP
+-
+### Entity
+- `@Entity`를 통해서 JPA가 해당 클래스를 DB 테이블 과 매핑되는 엔티티로 인식
+- domain 폴더  하위에 Entity 배치
+- 기본적으로 클래스명을 테이블 이름으로 사용(수정가능)
+- 클래스 필드들은 테이블 컬럼과 자동 매핑 됨(수정가능)
+- `@Id` 를 사용하여 기본키 설정 해야함
+-  내장 타입의 경우 `@Ebededable` 로 선언해주고 사용하는 쪽에서는 `@Ebeded` 선언해줌
+- `@GeneratedValue` 를 작성함으로써 기본키를 자동생성할 수 있다
+- value type
+  - 특정 엔티티에 종속되는 개념으로 객체지향적 설계와 유지보수를 쉽게하기위해 사용
+- 엔티티 연결
+  - 다대다 혹은 다대일 관계 등에 대해서 엔티티를 연결할때는 해당 관계에 맞는 어노테이션을 명시한다(ex-@ManyToOne)
+  - `@joinColumn(name="member_id")` 와 같은  방법으로 연결 // member_id 라는 필드를 기준으(외래키 저장)
