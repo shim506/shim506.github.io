@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
+        }
+        ul, p {
+            /*margin-top: 0.9em;  !* 리스트나 일반 문장의 상단 마진 통일 *!*/
+            font-size: 18px;
+            line-height: 2;
         }
 
         button {
@@ -31,9 +37,23 @@
         }
 
         img {
-            max-width: 100%;
+            max-width: 500px;
             height: auto;
             margin-top: 10px;
+        }
+
+        pre {
+            background-color: #f5f5f5; /* 코드 블록 배경색 */
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto; /* 가로 스크롤 허용 */
+            font-size: 14px;
+            white-space: pre-wrap; /* 자동 줄바꿈 */
+        }
+
+        code {
+            font-family: "Courier New", Courier, monospace;
+            color: #333;
         }
     </style>
 </head>
@@ -41,32 +61,27 @@
 
 <h1>📁 망각 곡선을 이용한 TIL 정리</h1>
 
-<button onclick="loadReadme('2')">📂 2월 </button>
-<button onclick="loadReadme('3')">📂 3월 </button>
+<button onclick="loadReadme('2')">📂 2월</button>
+<button onclick="loadReadme('3')">📂 3월</button>
 
 <h2>📖 README 내용</h2>
 <div id="readme">아래 버튼을 눌러 README를 확인하세요.</div>
 
 <script>
+    loadReadme()
     async function loadReadme(folder) {
         console.log(folder)
         try {
-            const response = await fetch(`./${folder}/README.md`);
+            console.log(folder)
+            const response = await fetch(folder ? `./${folder}/README.md` : `./README.md`);
             if (!response.ok) throw new Error('README.md를 불러올 수 없습니다.');
             const text = await response.text();
 
-            // README.md를 HTML로 변환 (간단한 마크다운 변환)
-            const htmlContent = text
-                .replace(/^# (.*$)/gim, '<h1>$1</h1>') // H1 변환
-                .replace(/^## (.*$)/gim, '<h2>$1</h2>') // H2 변환
-                .replace(/^### (.*$)/gim, '<h3>$1</h3>') // H3 변환
-                .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>') // 볼드 변환
-                .replace(/\*(.*?)\*/gim, '<em>$1</em>') // 이탤릭 변환
-                .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>') // 링크 변환
-                .replace(/!\[(.*?)\]\((.*?)\)/gim, `<img src="./${folder}/$2" alt="$1">`) // 이미지 변환
-                .replace(/\n/gim, '<br>'); // 줄 바꿈 처리
+            const fixedText = folder
+                ? text.replace(/!\[(.*?)\]\((.*?)\)/g, `![$1](./${folder}/$2)`)
+                : text;
 
-            document.getElementById('readme').innerHTML = htmlContent;
+            document.getElementById('readme').innerHTML = marked.parse(fixedText);
         } catch (error) {
             document.getElementById('readme').innerHTML = 'README를 불러올 수 없습니다.';
         }
