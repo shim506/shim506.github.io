@@ -173,6 +173,38 @@
 
 ### DB
 - 외래키는 두 테이블을 잇는 키로써 다른테이블에서는 기본키로 작용한다
+- 싱글 테이블 전략
+  - JPA 에서 상속 구조를 하나의 테이블에 저장하는 방법
+  - 장점: Join 이 없어 조회 성능빠름
+  - 단범: 사용하지 않느 컬럼 많아짐(Null)
+```java
+import jakarta.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 싱글 테이블 전략 사용
+@DiscriminatorColumn(name = "DTYPE") // 구분 컬럼 추가
+public abstract class Product {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private int price;
+}
+// 이를 상속하는 각각의 Book, Album 구체 클래스 사용
+```
+``` sql
+CREATE TABLE product (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    DTYPE VARCHAR(255),  -- 구분 컬럼
+    name VARCHAR(255),
+    price INT,
+    author VARCHAR(255), -- BOOK만 사용
+    isbn VARCHAR(255),   -- BOOK만 사용
+    artist VARCHAR(255)  -- ALBUM만 사용
+);
+```
 ## Spring
 ### AOP
 -
@@ -189,3 +221,6 @@
 - 엔티티 연결
   - 다대다 혹은 다대일 관계 등에 대해서 엔티티를 연결할때는 해당 관계에 맞는 어노테이션을 명시한다(ex-@ManyToOne)
   - `@joinColumn(name="member_id")` 와 같은  방법으로 연결 // member_id 라는 필드를 기준으(외래키 저장)
+- Enum 
+  - `@Enumerated(EnumType.STRING)` 을 통해서 설정 
+    - Ordinal 을 중간에 값을 추가할 경우 장애로 이어질 확율 높음 -> String 쓰기
