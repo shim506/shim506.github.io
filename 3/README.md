@@ -3,8 +3,8 @@
 ### SQL
 
 - 원래는 아래와 같이 SQL 1과 같이 작성해야하지만 JAVA 코드에서 바인딩 변수를 사용할때 ? 를 사용할 수 있음
-    - INSERT INTO 테이블명 (컬럼1, 컬럼2, ...) VALUES (값1, 값2, ...);
-    - "insert into member(member_id, money), values (?,?)";
+    - `INSERT INTO 테이블명 (컬럼1, 컬럼2, ...) VALUES (값1, 값2, ...);`
+    - `insert into member(member_id, money), values (?,?)";`
 
 # 3일
 
@@ -15,13 +15,13 @@
 - 문제 안에서 이미 정렬된 리스트가 주어졌을때는 이를 활용할 수 있느 방법을 생각해보자
 - Map 구체 활용법
     - getOrDefault 를 활용하여 조건문을 줄일 수있따
-        - cntMap[team] = cntMap.getOrDefault(team , 0 ) + 1
+        - `cntMap[team] = cntMap.getOrDefault(team , 0 ) + 1`
     - 리스트에 대해서는 apply 연산자를 이용하여 리스트를 반환하면 깔끔하다
-        - scoreMap[ele] = scoreMap.getOrDefault(ele ,mutableListOf()).apply { add(score) }
+        - `scoreMap[ele] = scoreMap.getOrDefault(ele ,mutableListOf()).apply { add(score) }`
 - 복잡한 정렬 조건
     - 간단한 정렬른 sortBy{} 를 활용하고, 복잡한 정렬에 대해서는 compareBy 와 함게 sortedWith 를 사용하는 것이 좋음
     - 다중 정렬 기준을 적용하는데 특히 효과적
-        - ex) val sortedList = sumMap.toList().sortedWith(compareBy({ it.second }, { fifthMap[it.first] }))
+        - ex) `val sortedList = sumMap.toList().sortedWith(compareBy({ it.second }, { fifthMap[it.first] }))`
 - 리스트 vs 배열
     - 만약 인덱스 저장이 필요하고 자료의 길이를 고정해놓는 것이 필요하다면 배열을 사용하는 것이 효고적이다
     - 리스트의 경우 인덱스 값까지 Pair 로 저장하거나 빈 값을 넣어 두어야하는 방식이기에 이 케이스에서의 리스트 장점이 사라진다
@@ -103,7 +103,7 @@
     - person.get지갑().get신분증().age > = 19 보다는 person.isAgeGreaterThanOrEqualTo(19) 가 나은 구현
 - 필드
     - 불필요한 필드를 굳이 만들 필요없음
-    - 필드 A 를 가지고 계산할 수 있는 기능
+    - 기존 필드 를 가지고 계산할 수 있는 필드를 만드는 것은 고민해보기
 
 # 6일
 
@@ -167,7 +167,7 @@
 
 ### 코테
 - joinToString 시 람다가 아닌 sperater 로 주입
-  - arr.toList().joinToString(" ")
+  - `arr.toList().joinToString(" ")`
 - 규칙 또는 점화식을 찾을 때 더욱 간단한 조건이 없는지 생각해보기
 
 ### DB
