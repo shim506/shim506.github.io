@@ -251,7 +251,7 @@ CREATE TABLE product (
 - DAO(Data Access Object)
   - 레파지토리와 유사한 개념으로 애해할 수 시음
 - DTO(Data Transfer Object)
-  - 계층 간 데이터 교환을 위한 객체ㅔ
+  - 계층 간 데이터 교환을 위한 객체
   - 로직을 가질 수 없고 getter/setter 만을 가진다
 - VO(Value Object)
   - 불변성을 가지며 값 자체가 중요한 객체
