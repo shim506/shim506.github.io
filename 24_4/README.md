@@ -1,3 +1,25 @@
+### 2일
+
+### 서브쿼리
+- 일반적으로 괄호로 감싸며, 외부 쿼리에 값을 전달하거나 비교하는 데 사용됨
+- 조인으로 대체가 가능하다면 조인을 사용하는 것이 성능적으로 나음
+- 주요형태
+  - 스칼라 서브 쿼리 
+    - SELECT name, (SELECT MAX(age) FROM users) AS max_age FROM users;
+    - SELECT 절에서 칼럼가 레코드가 하나인 결과를 반환하지 않을 경우 에러 발생
+  - FROM 절 서브쿼리
+    - 서브쿼리를 하나의 임시테이블 처럼 사용
+    - SELECT department, avg_salary FROM (
+      SELECT department, AVG(salary) AS avg_salary
+      FROM employees
+      GROUP BY department
+      ) AS dept_avg
+      WHERE avg_salary > 5000;
+  - where 절 서브쿼리
+    - in 비교, 동등, 작다, 크다 비교
+    - SELECT name FROM users
+      WHERE id IN (SELECT user_id FROM orders WHERE amount > 100);
+
 ### 1일
 
 ## 실행 계획
