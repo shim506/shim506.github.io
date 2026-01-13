@@ -1,3 +1,36 @@
+### 13일
+- EXIF 정보
+    - Exchange Image File Format
+    - 사진의 설명서로서 Orientation / Flip / 회정 정보들을 포함한다
+    - 카메라는 항상 한 방향으로만 픽셀을 저장하지만 센서를 통해서 EXIF 정보를 첨가하고 사용자에게 보여줄 때 이를 반영하여 보기 좋은 형태로 노출
+- File Provider
+
+- ContentProvider
+    - Android에서 앱간의 데이터 를 안전하게 공유하기 위한 IPC 컴포넌트
+    - URI (content://) 기반으로 데이터 접근
+- FileProvider
+    - 실제 파일의 경로(/data/data...) 대신에 content:// URI 로 변환하여 사용
+    - 임시 접근 권한만 부여 함    
+    - 앱 내부 파일을 생성할때 사용
+    - 상대 앱은 파일에 대한 직접(절대) 경로를 모른 채 접근
+        - 빈파일을 만들고 이를 FileProvider를 사용하여 다른앱에 쓰기를 부탁(카메라 촬영)
+        - 앱별 sandbox 저장소 개념에 맞는 방법
+- ContentProvider & FileProvider
+    - FileProvider 는 ContentProvider 의 특수한 형태(구현체)
+    - 카메라 촬영 결과 전달, 이미지/영상 공유 등 거의 모든 경우 FileProvider를 사용함
+- ContentResolver
+    - contentResolver 는 데이터를 요청/소비하는 요소
+    - 포토 피커로부터 받은 결과(url) d에 대해서 읽기, 쓰기 , query 등을 하기 위해서 필요함
+    - content://URL 을 받았다면 ContentResolver 로 접근
+
+```
+// 카메라 촬영 후 이미지 읽기
+val uri: Uri = photoUri // FileProvider로 받은 것
+
+val inputStream = contentResolver.openInputStream(uri)
+bitmap = BitmapFactory.decodeStream(inputStream)
+```
+    
 ### 9일
 - Google App Architecture 와 Clean Architecture 차이
     - 의존 구조의 차이가 있음
