@@ -1,3 +1,45 @@
+### 14일
+- ViewModel 에서 리소스 삭제 및 정리 해야할때
+    - super.onCleared() 가 호출될때 viewModelScope 도 사라진다
+    - 그러나 NonCancellable 과 함께 호출될 경우 사라지지 않는다
+    - super.onCleared() 보다 먼저 호출되게 하여 실행 시켜놓으면 viewModelScope 이 끝나도 수행함
+```
+viewModelScope.launch{
+    withContext(context = NonCancellable + Dispatchers.IO)
+        runCatching {
+            cacheDir.listFiles()?.forEach {it.deleteRecursively()}
+        }
+}
+```
+- ViewModelScope & LifcycleScope 를 써야하는 이유
+    - 자동 취소, 에러/취소 전파를 지원하기 때문에
+    - 아래 예시 코드에서 fetchA 가 실패할 경우 fetchB(형제 코루틴) 도 같이 취소 됨
+    - GlobalSceop 안에서는 그렇지 않음
+    - 즉 책임의 주체가 생기는 것
+```
+viewModelScope.launch {
+    val a = async { fetchA() }
+    val b = async { fetchB() }
+
+    a.await()
+    b.await()
+}
+
+```
+- Claude & Language Server
+    - Claude Code 에 명령을 내리면 내 컴퓨터에서 돌아가는 LanguageServer 와 대화함
+    - LS 는 로컬 프로그램임 (Android 의 경우 AS 와 IntelliJ dㅔ서 )
+    - 진행 순서
+        ClaudeCode -> Claude AI(Anthropic 서버) -> LS(로컬) -> 코드베이스(내 파일)
+    - 이때 ClaudeCode 와 LS 사이의 대화 규칙이 LSP 임
+    - Android 의 경우 CladueCode 가 Android IDE Mcp 와 연계되어 사용되어 불필요함 (MCP 이름 : IDE Integration)
+
+```
+Claude Code: "calculateTotal 정의가 어디야?" (textDocument/definition)
+Language Server: "src/billing.py 42번째 줄이야"
+```
+
+
 ### 13일
 - EXIF 정보
     - Exchange Image File Format
