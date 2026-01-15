@@ -1,3 +1,20 @@
+### 15일
+- 프로젝트 구조 
+    - CleanArchitechture : UI -> Domain <- Data
+    - Android App Architecture : UI -> Domain(Optional) -> Data
+- NBSP
+    - NoneBreakSpace : 줄바꿈이 불가능한 공백
+    - 눈에 보일때는(UI 렌더링) 일반 공백처럼 보임 but 식별값일때(로그) : \u00A0, <NBSP>, ⍽ 등으로 표시 
+    - \u00A0 
+- Android LineHeight
+    - 안드로이드에서의 lineHeight 는 다른 줄과의 baseLine 까지의 거리이다.
+    - 특히 한줄일 경우 lineHeight 값을 통한 조절이 불가능함
+- Android 상수 네이밍
+    - 일반 kotlin 에서는 snake
+    - compose 안에서는 Camel 사용
+
+
+
 ### 14일
 - ViewModel 에서 리소스 삭제 및 정리 해야할때
     - super.onCleared() 가 호출될때 viewModelScope 도 사라진다
