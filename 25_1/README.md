@@ -1,3 +1,30 @@
+### 19일
+- inJustDecodeBounds = true
+    - 실제 비트맵을 메모리에 로드하지 않고 제한적으로 사용할 수 있ㅡ
+    - 이미지 파일의 처음 몇 바이트(헤더) 만 읽음
+    - 실제 픽셀 데이터 디코딩 없음
+- JetpackCompose Naming
+    - Screen
+    - Route
+
+- Compose Navigation 처리
+    - Route 에서만 Navigation 처리
+    - Screen 은 NavHost를 몰라도 됨
+    - Route/Screen 을 나누는 이유
+        - Screen 에 대한 Preview 작성이 가능해 짐
+    - composable("...") 은 직접호출 함수가 아닌 목적지 등록
+    - navController.navigate("detail/3")
+        - detail 스크린에 인자 3을 가지고 전환
+
+
+
+
+- 이미지 처리
+    - Crop : 확대해서 꽉 채움 (넘치면 자름)
+    - Fit : 확대해서 컨테이너 안에 맞춤(빈 공간 생길 수 있음)
+    - Fill : 비율 무시하고 컨테이너에 맞춤
+- 
+
 ### 15일
 - 프로젝트 구조 
     - CleanArchitechture : UI -> Domain <- Data
