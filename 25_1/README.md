@@ -1,3 +1,27 @@
+### 23일
+- 에디터 기본 지원동착 체크
+    - 입력, 줄바꿈에 의해서 커서가 시야에서 사라지지 않도록 자동 스크롤 동작해야 함
+    - 드레그를 통한 케럿(커서)이 이동해야하며 이에 맞게 스크롤이 동작해야 함
+    - 커서이동 (하드웨어 키포드 방향키, 소프트 키보드 space 에서 움직임) 시 스크롤 동작
+    - 커서가 키보드에 의해 가려지는 케이스가 없는지
+
+- 에디터 관련 클래스 및 필드 정리
+    - TextFieldValue.section
+        - testFeildValue.selection.end
+    - TextLayoutResultState
+        - textLayoutResult.getLineTop
+    - bringIntoViewRequestrer
+
+- upsert 란?
+    - key 값을 기준으로 이미 있는 값이라면 update 를 없다면 insert 를 수행함
+    - Room Library 에서는 upsert 기능을 제공함
+- delete 시 유의점
+    - not in 절에는 nullable 한 값이 안들어가도록 해야함
+
+### 20일
+- 이미지 다운로드 Util 에서 이미지 라이브리러 로더를 사용하지 않는이유
+    - 컴포즈 로더(Coil, Glide)는 해당 placeholder 값을 기준으로 캐싱하기 때문에 크기나 화질에 문제가 있을 수 있음
+
 ### 19일
 - inJustDecodeBounds = true
     - 실제 비트맵을 메모리에 로드하지 않고 제한적으로 사용할 수 있ㅡ
