@@ -1,3 +1,60 @@
+### 26일
+remember
+- remember 는 recomposition 이후에도 값을 유지 하기 위한 도구
+    - 최초 composition 시 한 번 실행
+    - 이후 recompositiono 에서는 재실행 X
+    - key 값이 있는 remember 값은 key 를 기준으로 재생성 됨
+    - 예시
+        - var count by remember {mutableStateOf(0)}
+        - compose 사이클동안 해당 객체의 주소값은 유지되지만 mutableStateOf 값이 바뀔 수는 있음
+        - Compose 는 해당 값에 대한 관찰을 수행
+        - 값이 바뀔때 마다 리컴포지션 수행
+
+- rememberUdateState
+    - 값이 변경되어도 재시작되지 않아야하는 Effect 내에서 최신값으로의 수정이 필요할때 사용
+        - LaunchedEffect 는 key 로 전달되는 값이 바뀌면 기존 효과를 취소하고 재시작하지만 중간에 끊기지 않고 계속 실행되야할때 씀
+        - 스플레시 화면등
+- rememberSaveable
+    - 화면 회전 시 유지됨 + 리컴포지션 시에도 유지 
+- 페이지 이동중 객체 전달 방법 
+    - 이전페이지에서 객체 저장 
+        - rootNavController.currentBackStackEntry?.saveStateHandler?.set(KEY, value)
+    - 이후 페이지에서 객체 추출
+        - rottNavController.previousBackStackEntry?.saveStateHadle?.get<Post>(KEY)
+
+- Context
+    - 리소스, 시스템 서비스, 다른 컴포넌트에 접근하기 위한 출입증 같은 존재
+        - getString(R.string.xxx) -> 리소스 접근
+        - startActivity(Intent) -> 화면전환
+        - getSystemServic -> 시스템 서비스 사용
+
+- ApplicationContext
+    - 싱글톤
+    - UI 와 상관 없음
+    - 파일, DB, SharedPreferences, DataStore 에 쓰임
+```
+class Repository(
+    @ApplicationContext private val context : Context
+)
+```
+
+- ActivityContext
+    - Activity 생명주기와 동일
+    - UI 가 보이는 작업에서 쓰임
+    - Compose 내에서 사용하는 contenxt -> val context = LocalContext.current
+    - 오래 잡고 있으면 메모리 릭 위험 
+
+```object ImageLoader {
+            lateinit var context: Context
+
+        }
+// 일때 Activity 는 죽어야하는데 object 가 계속 참조하여 GC 불가함
+        ```
+
+    
+
+
+
 ### 23일
 - 에디터 기본 지원동착 체크
     - 입력, 줄바꿈에 의해서 커서가 시야에서 사라지지 않도록 자동 스크롤 동작해야 함
@@ -15,6 +72,7 @@
 - upsert 란?
     - key 값을 기준으로 이미 있는 값이라면 update 를 없다면 insert 를 수행함
     - Room Library 에서는 upsert 기능을 제공함
+
 - delete 시 유의점
     - not in 절에는 nullable 한 값이 안들어가도록 해야함
 
@@ -39,9 +97,6 @@
     - composable("...") 은 직접호출 함수가 아닌 목적지 등록
     - navController.navigate("detail/3")
         - detail 스크린에 인자 3을 가지고 전환
-
-
-
 
 - 이미지 처리
     - Crop : 확대해서 꽉 채움 (넘치면 자름)
