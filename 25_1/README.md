@@ -1,3 +1,97 @@
+### 27일
+- MVI 
+    - 단방향 아키택처 패턴으로 안드로이드(Compose + Flow) 와 궁합이 좋음
+    - Intent(사용자 의도) -> Model(상태 계산) -> View(화면)을 나타냄
+    - 기존문제
+        - 상태가 여기저기 흩어짐
+        - UI 이벤트가 중복처리 됨
+        - 상태 추적이 어려움
+    - 해결법 -> Single Source Of Truth
+    - 사용자의 의도는 모두 Intent 로 묶임
+```
+sealed interface EditorIntent{
+    data object SubmitClick : EditorIntent
+    data class TextChange(val text: String) : EditorIntent
+}
+
+@Composable
+fun EditorScreen(
+    state: EditorState,
+    onIntent : (EditorIntent) -> Unit
+){
+    TextField(
+        value = state.text,
+        onValueChange = {
+            onIntent(EditorIntent.TextChange(it))
+        }
+    )
+
+    Button(onClick = {
+            onIntent(EditorIntent.SubmitClick)
+        }
+    ){
+        Text("게시")
+    }
+}
+
+class EditorViewModel @Inject constructor(
+    private val submitUseCase: SubmitUseCase
+) : ViewModel() {
+
+    private val _state = MutableStateFlow(EditorState())
+    val state: StateFlow<EditorState> = _state
+
+    fun onIntent(intent: EditorIntent) {
+        when (intent) {
+            is EditorIntent.TextChanged -> {
+                _state.update {
+                    it.copy(text = intent.text)
+                }
+            }
+
+            EditorIntent.SubmitClick -> {
+                submit()
+            }
+        }
+    }
+}
+```
+- MVI 의 SideEffect
+    - 한 번만 일어나야하는 일들
+        - 스낵바 띄우기, 토스트 , 화면 이동
+    - 반면 State 는 화면을 그리는 "지속 상태" 를 의미함
+        - State 예시 : isLoading, Items, text
+        - Effect 예시: ShowSnackbar, navigate
+
+```
+@Composable
+fun EditorRoute(
+    viewModel: EditorViewModel = hiltViewModel(),
+    nav: NavController,
+    snackbarHostState: SnackbarHostState,
+) {
+    val state by viewModel.state.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.effect.collect { effect ->
+            when (effect) {
+                is EditorEffect.ShowSnackbar ->
+                    snackbarHostState.showSnackbar(effect.message)
+
+                is EditorEffect.NavigateTo ->
+                    nav.navigate(effect.route)
+            }
+        }
+    }
+
+    EditorScreen(
+        state = state,
+        onSubmit = viewModel::onSubmitClick
+    )
+}
+```
+- 스낵바는 한번에 한개만을 띄울 수 있고 다른 것으로 대체된다
+
 ### 26일
 remember
 - remember 는 recomposition 이후에도 값을 유지 하기 위한 도구
