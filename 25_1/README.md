@@ -1,3 +1,14 @@
+### 28일
+- MVI 실전
+    - intent 로 구성된 람다에서 관련 내용이 실행 됨
+    - viewmodel 내부, 그 안에 private 함수 까지 감싸짐
+    - intent 안에서 다른 intent를 호출할 경우 동기성을 보장함
+    - SideEffect
+        - UI 에 대한 1회성 행동을 위한 내용
+    - Reduce
+        - 상태 변경을 이 안에서 수행해야 함
+
+    
 ### 27일
 - MVI 
     - 단방향 아키택처 패턴으로 안드로이드(Compose + Flow) 와 궁합이 좋음
